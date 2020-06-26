@@ -13,10 +13,10 @@ public class SingleArrayCaesarCipher implements Cipher {
         alphabet = "abcdefghijklmnopqrstuvwxyz";
         this.shift = shift;
     }
-    @Override
-    public String encode(String message) {
+
+    private String process(String message, int shift) {
         Preconditions.checkNotNull(message, "Null input");
-        StringBuilder cipherText = new StringBuilder();
+        StringBuilder text = new StringBuilder();
         for(int i = 0; i < message.length(); i++) {
             char c = message.charAt(i);
             boolean upper = Character.isUpperCase(c);
@@ -26,19 +26,24 @@ public class SingleArrayCaesarCipher implements Cipher {
                 char ch = alphabet.charAt((index + shift) % alphabet.length());
                 // Handle uppercase letters
                 if (upper) {
-                    cipherText.append(Character.toUpperCase(ch));
+                    text.append(Character.toUpperCase(ch));
                 } else {
-                    cipherText.append(ch);
+                    text.append(ch);
                 }
             } else {
-                cipherText.append(c);
+                text.append(c);
             }
         }
-        return cipherText.toString();
+        return text.toString();
+    }
+
+    @Override
+    public String encode(String message) {
+        return process(message, shift);
     }
 
     @Override
     public String decode(String encryptedMessage) {
-        return null;
+        return process(encryptedMessage, (alphabet.length()-shift));
     }
 }
