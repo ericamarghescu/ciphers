@@ -2,6 +2,9 @@ package erica.cipher;
 
 import com.google.common.base.Preconditions;
 
+/**
+ * Cipher class that implements the Vigenère Cipher using a single alphabet string
+ */
 public class VigenereCipher implements Cipher {
     private String keyword;
     private String alphabet;
@@ -22,6 +25,7 @@ public class VigenereCipher implements Cipher {
             int shift;
             // Handle special characters and spaces
             if (index != -1) {
+                // Check if encoding or decoding
                 if(flag) {
                     shift = alphabet.length() - alphabet.indexOf(keyword.charAt(j++ % keyword.length()));
                 } else {

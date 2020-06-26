@@ -3,13 +3,13 @@ package erica.cipher;
 import com.google.common.base.Preconditions;
 
 /**
- * Cipher class that implements the Caesar cipher using an alphabet string
+ * Cipher class that implements the Caesar cipher using a single alphabet string
  */
-public class SingleArrayCaesarCipher implements Cipher {
+public class CaesarCipher implements Cipher {
     private String alphabet;
     private int shift;
 
-    public SingleArrayCaesarCipher(int shift) {
+    public CaesarCipher(int shift) {
         alphabet = "abcdefghijklmnopqrstuvwxyz";
         this.shift = shift;
     }

@@ -1,7 +1,7 @@
 package erica.cipher;
 
 /**
- * A cipher interface that encodes and decodes Strings
+ * A cipher interface that encodes and decodes strings
  */
 public interface Cipher {
     /**
